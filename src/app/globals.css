@@ -1,26 +1,106 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
+  --font-display: var(--font-gloock), Georgia, serif;
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+
+  /* Brand colors */
+  --color-verde-principal: #1B5E3B;
+  --color-verde-medio: #2D7D52;
+  --color-verde-claro: #F2FAF5;
+  --color-tinta: #141A12;
+  --color-cinza: #4B5047;
+  --color-off-white: #FAFAF8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #FAFAF8;
+  --foreground: #141A12;
+  --card: #ffffff;
+  --card-foreground: #141A12;
+  --primary: #1B5E3B;
+  --primary-foreground: #ffffff;
+  --secondary: #F2FAF5;
+  --secondary-foreground: #141A12;
+  --muted: #F2FAF5;
+  --muted-foreground: #4B5047;
+  --accent: #2D7D52;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e4e9e5;
+  --input: #e4e9e5;
+  --ring: #2D7D52;
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: var(--font-instrument-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Font utilities */
+.font-display {
+  font-family: var(--font-gloock), Georgia, serif;
+}
+.font-mono-custom {
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+/* CTA pulse — ONLY on primary hero button */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(27, 94, 59, 0.35); }
+  60% { box-shadow: 0 0 0 14px rgba(27, 94, 59, 0); }
+}
+.btn-cta-pulse {
+  animation: pulse-green 2.8s ease-in-out infinite;
+}
+
+/* Scroll reveal animations */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+.animate-fade-up-delay-1 { animation-delay: 0.1s; }
+.animate-fade-up-delay-2 { animation-delay: 0.2s; }
+.animate-fade-up-delay-3 { animation-delay: 0.3s; }
+
+/* Safe area for sticky bottom bar on iOS */
+.safe-area-inset-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* Add bottom padding on mobile so sticky CTA doesn't cover content */
+@media (max-width: 767px) {
+  main { padding-bottom: 84px; }
 }
