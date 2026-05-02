@@ -1,8 +1,6 @@
 import { CtaButton } from "@/components/ui/cta-button";
 import { Check, Clock } from "lucide-react";
 
-const CTA_URL = "https://pay.hotmart.com/placeholder";
-
 const itens = [
   "12 módulos na sequência exata dos 30 dias",
   "Checklist mestre imprimível",
@@ -69,7 +67,7 @@ export function PriceCard() {
               ))}
             </ul>
 
-            <CtaButton href={CTA_URL} className="w-full justify-center text-base sm:text-base py-4 sm:py-4">
+            <CtaButton className="w-full justify-center text-base sm:text-base py-4 sm:py-4">
               QUERO MEU PROTOCOLO — R$ 47
             </CtaButton>
 

@@ -1,7 +1,11 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 
+export const HOTMART_URL = "https://pay.hotmart.com/X105653642O?checkoutMode=2";
+
 interface CtaButtonProps {
-  href: string;
+  href?: string;
   children: React.ReactNode;
   white?: boolean;
   className?: string;
@@ -9,7 +13,7 @@ interface CtaButtonProps {
 }
 
 export function CtaButton({
-  href,
+  href = HOTMART_URL,
   children,
   white = false,
   className,
@@ -18,9 +22,18 @@ export function CtaButton({
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      onClick={(e) => {
+        e.preventDefault();
+        if (typeof window !== "undefined" && (window as Window & { fbq?: (...args: unknown[]) => void }).fbq) {
+          (window as Window & { fbq?: (...args: unknown[]) => void }).fbq!("track", "InitiateCheckout", {
+            content_name: "Protocolo Portugal: Os 30 Primeiros Dias",
+            value: 47.00,
+            currency: "BRL",
+          });
+        }
+      }}
       className={cn(
+        "hotmart-fb hotmart__button-checkout",
         "inline-flex items-center justify-center cursor-pointer",
         "text-base sm:text-lg font-medium tracking-wide",
         "px-8 sm:px-10 py-4 sm:py-5 rounded-xl",

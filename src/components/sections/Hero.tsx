@@ -1,8 +1,6 @@
 import { CtaButton } from "@/components/ui/cta-button";
 import { CheckCircle } from "lucide-react";
 
-const CTA_URL = "https://pay.hotmart.com/placeholder";
-
 export function Hero() {
   return (
     <section className="relative bg-[#FAFAF8] pt-16 pb-20 px-4 overflow-hidden">
@@ -50,7 +48,7 @@ export function Hero() {
 
         {/* CTA */}
         <div className="flex flex-col items-center gap-3 animate-fade-up animate-fade-up-delay-3">
-          <CtaButton href={CTA_URL} pulse>
+          <CtaButton pulse>
             Quero meu Protocolo — R$ 47
           </CtaButton>
           <p className="text-sm text-[#4B5047]">

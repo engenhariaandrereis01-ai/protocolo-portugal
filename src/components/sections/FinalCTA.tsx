@@ -1,8 +1,6 @@
 import { CtaButton } from "@/components/ui/cta-button";
 import { Lock } from "lucide-react";
 
-const CTA_URL = "https://pay.hotmart.com/placeholder";
-
 export function FinalCTA() {
   return (
     <section className="py-24 px-4 bg-[#1B5E3B]">
@@ -18,7 +16,7 @@ export function FinalCTA() {
           Acesso imediato. Garantia de 7 dias. Sem risco.
         </p>
 
-        <CtaButton href={CTA_URL} white>
+        <CtaButton white>
           ACESSAR O PROTOCOLO AGORA
         </CtaButton>
 
