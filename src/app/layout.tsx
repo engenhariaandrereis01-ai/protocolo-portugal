@@ -42,12 +42,21 @@ export const metadata: Metadata = {
     siteName: "BR Fora do Brasil",
     locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "https://brforadobrasil.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Protocolo Portugal: Os 30 Primeiros Dias — guia para brasileiros",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Protocolo Portugal: Os 30 Primeiros Dias — para brasileiros em 2026",
     description:
       "NIF, NISS, SNS, banco e moradia. Na ordem certa. Em 30 dias. Sem depender de grupo de WhatsApp.",
+    images: ["https://brforadobrasil.com/og-image.png"],
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "https://brforadobrasil.com/portugal" },
