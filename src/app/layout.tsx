@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Gloock, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
+import { ViewContentTracker } from "@/components/tracking/ViewContentTracker";
 import "./globals.css";
 
 const gloock = Gloock({
@@ -38,13 +39,13 @@ export const metadata: Metadata = {
     title: "Protocolo Portugal: Os 30 Primeiros Dias — para brasileiros em 2026",
     description:
       "NIF, NISS, SNS, banco e moradia. Na ordem certa. Em 30 dias. Sem depender de grupo de WhatsApp.",
-    url: "https://brforadobrasil.com/portugal",
+    url: "https://protocolo-portugal.netlify.app",
     siteName: "BR Fora do Brasil",
     locale: "pt_BR",
     type: "website",
     images: [
       {
-        url: "https://brforadobrasil.com/og-image.png",
+        url: "https://protocolo-portugal.netlify.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Protocolo Portugal: Os 30 Primeiros Dias — guia para brasileiros",
@@ -56,13 +57,13 @@ export const metadata: Metadata = {
     title: "Protocolo Portugal: Os 30 Primeiros Dias — para brasileiros em 2026",
     description:
       "NIF, NISS, SNS, banco e moradia. Na ordem certa. Em 30 dias. Sem depender de grupo de WhatsApp.",
-    images: ["https://brforadobrasil.com/og-image.png"],
+    images: ["https://protocolo-portugal.netlify.app/og-image.png"],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://brforadobrasil.com/portugal" },
+  alternates: { canonical: "https://protocolo-portugal.netlify.app" },
 };
 
-const PIXEL_ID = "1382631856941384";
+const PIXEL_ID = "1332664422130568";
 
 export default function RootLayout({
   children,
@@ -76,6 +77,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-[#FAFAF8] text-[#141A12] font-sans">
         {children}
+        <ViewContentTracker />
 
         {/* ── Meta Pixel ── */}
         <Script
@@ -93,12 +95,6 @@ export default function RootLayout({
               }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '${PIXEL_ID}');
               fbq('track', 'PageView');
-              fbq('track', 'ViewContent', {
-                content_name: 'Protocolo Portugal: Os 30 Primeiros Dias',
-                content_type: 'product',
-                value: 47.00,
-                currency: 'BRL'
-              });
             `,
           }}
         />

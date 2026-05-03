@@ -22,10 +22,10 @@ export function CtaButton({
   return (
     <a
       href={href}
-      onClick={(e) => {
-        e.preventDefault();
-        if (typeof window !== "undefined" && (window as Window & { fbq?: (...args: unknown[]) => void }).fbq) {
-          (window as Window & { fbq?: (...args: unknown[]) => void }).fbq!("track", "InitiateCheckout", {
+      onClick={() => {
+        const w = window as Window & { fbq?: (...args: unknown[]) => void };
+        if (w.fbq) {
+          w.fbq("track", "InitiateCheckout", {
             content_name: "Protocolo Portugal: Os 30 Primeiros Dias",
             value: 47.00,
             currency: "BRL",

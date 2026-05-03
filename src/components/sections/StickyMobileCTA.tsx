@@ -8,7 +8,16 @@ export function StickyMobileCTA() {
       <div className="bg-white/90 backdrop-blur-sm border-t border-[#e4e9e5] px-4 py-3 safe-area-inset-bottom">
         <a
           href={HOTMART_URL}
-          onClick={(e) => e.preventDefault()}
+          onClick={() => {
+            const w = window as Window & { fbq?: (...args: unknown[]) => void };
+            if (w.fbq) {
+              w.fbq("track", "InitiateCheckout", {
+                content_name: "Protocolo Portugal: Os 30 Primeiros Dias",
+                value: 47.00,
+                currency: "BRL",
+              });
+            }
+          }}
           className="hotmart-fb hotmart__button-checkout flex items-center justify-between w-full bg-[#1B5E3B] hover:bg-[#2D7D52] text-white rounded-xl px-5 py-3.5 transition-colors duration-200 active:scale-[0.99] cursor-pointer"
         >
           <div>
